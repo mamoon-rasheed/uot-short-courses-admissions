@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Program Details - UoT IT Team</title>
+    <style>
+        /* --- SHARED STYLES (Matches your Form) --- */
+        :root {
+            --primary-color: #2c3e50;
+            --accent-color: #3498db;
+            --bg-color: #f4f6f8;
+            --white: #ffffff;
+            --text-color: #333333;
+            --card-bg: #ffffff;
+            --shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            line-height: 1.6;
+        }
+
+        /* --- HERO SECTION --- */
+        .hero {
+            background-color: var(--primary-color);
+            color: var(--white);
+            padding: 60px 20px;
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+        }
+
+        .hero p {
+            font-size: 1.1rem;
+            opacity: 0.9;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        /* --- CONTAINER --- */
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+
+        h2.section-title {
+            text-align: center;
+            color: var(--primary-color);
+            margin-bottom: 40px;
+            font-size: 2rem;
+            position: relative;
+        }
+
+        h2.section-title::after {
+            content: '';
+            display: block;
+            width: 60px;
+            height: 3px;
+            background: var(--accent-color);
+            margin: 10px auto 0;
+        }
+
+        /* --- TRACKS GRID --- */
+        .tracks-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+            margin-bottom: 50px;
+        }
+
+        .track-card {
+            background: var(--card-bg);
+            border-radius: 8px;
+            padding: 30px;
+            box-shadow: var(--shadow);
+            border-top: 4px solid var(--accent-color);
+            transition: transform 0.3s ease;
+        }
+
+        .track-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .icon {
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+            display: block;
+        }
+
+        .track-title {
+            font-size: 1.25rem;
+            font-weight: bold;
+            color: var(--primary-color);
+            margin-bottom: 10px;
+        }
+
+        .track-desc {
+            font-size: 0.95rem;
+            color: #555;
+            margin-bottom: 15px;
+        }
+
+        .tech-stack {
+            background: #eef7fc;
+            padding: 10px;
+            border-radius: 5px;
+            font-size: 0.85rem;
+            color: var(--primary-color);
+            font-weight: 600;
+        }
+
+        /* --- BENEFITS SECTION --- */
+        .benefits {
+            background: white;
+            padding: 40px;
+            border-radius: 8px;
+            box-shadow: var(--shadow);
+            margin-bottom: 40px;
+        }
+
+        .benefits ul {
+            list-style: none;
+            padding-left: 0;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+        }
+
+        .benefits li {
+            position: relative;
+            padding-left: 25px;
+        }
+
+        .benefits li::before {
+            content: '✔';
+            color: var(--accent-color);
+            position: absolute;
+            left: 0;
+            font-weight: bold;
+        }
+
+        /* --- CTA BUTTON --- */
+        .cta-container {
+            text-align: center;
+            margin-top: 20px;
+            padding-bottom: 60px;
+        }
+
+        .btn-apply {
+            display: inline-block;
+            background-color: var(--accent-color);
+            color: white;
+            padding: 15px 40px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 1.1rem;
+            transition: background 0.3s ease;
+            box-shadow: 0 4px 10px rgba(52, 152, 219, 0.3);
+        }
+
+        .btn-apply:hover {
+            background-color: #2980b9;
+        }
+
+        /* --- RESPONSIVE --- */
+        @media (max-width: 600px) {
+            .benefits ul {
+                grid-template-columns: 1fr;
+            }
+
+            .hero h1 {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="hero">
+        <h1>Volunteer Developer Program</h1>
+        <p>Bridge the gap between academic theory and professional reality. Join the UoT IT Team to build, manage, and
+            lead.</p>
+    </div>
+
+    <div class="container">
+
+        <div style="text-align: center; margin-bottom: 50px; max-width: 800px; margin-left: auto; margin-right: auto;">
+            <p>The <strong>Volunteer Developer Program (VDP)</strong> is designed for students who want to go beyond the
+                classroom. As an internee, you will work directly alongside the official IT Team, contributing to live
+                University projects, maintaining infrastructure, and creating valuable resources for your peers.</p>
+        </div>
+
+        <h2 class="section-title">Available Tracks</h2>
+
+        <div class="tracks-grid">
+
+            <div class="track-card">
+                <span class="icon">💻</span>
+                <h3 class="track-title">Full Stack Development</h3>
+                <p class="track-desc">Work on maintaining and upgrading the University's core portals and management
+                    systems. We require dedication to coding standards and clean architecture.</p>
+                <div class="tech-stack">
+                    Required Stack:<br>
+                    Frontend: HTML, CSS, JavaScript<br>
+                    Backend: C# and ASP.NET (Only)
+                </div>
+            </div>
+
+            <div class="track-card">
+                <span class="icon">📝</span>
+                <h3 class="track-title">Documentation & Education</h3>
+                <p class="track-desc">Developers need good guides. Your role is to understand our existing software and
+                    create technical documentation, user manuals, and video tutorials for future students and staff.</p>
+                <div class="tech-stack">
+                    Skills: Technical Writing, Video Recording, Clear Communication
+                </div>
+            </div>
+
+            <div class="track-card">
+                <span class="icon">🌐</span>
+                <h3 class="track-title">Networking & Administration</h3>
+                <p class="track-desc">Get your hands on the hardware. Assist in managing the campus network,
+                    troubleshooting connectivity issues, reporting bugs, and monitoring server analytics.</p>
+                <div class="tech-stack">
+                    Skills: Networking Basics, Hardware Troubleshooting, Server Mgmt
+                </div>
+            </div>
+
+            <div class="track-card">
+                <span class="icon">🎨</span>
+                <h3 class="track-title">Content Creation</h3>
+                <p class="track-desc">The digital face of the University. Help us craft engaging content for the
+                    official website, ensuring information is up-to-date, accessible, and visually appealing.</p>
+                <div class="tech-stack">
+                    Skills: Copywriting, Basic CMS Knowledge, Creativity
+                </div>
+            </div>
+
+            <div class="track-card">
+                <span class="icon">🌱</span>
+                <h3 class="track-title">The Learner Track</h3>
+                <p class="track-desc">Zero coding knowledge? No problem. This track is for students with pure passion
+                    who want to start their IT journey. You will be mentored to eventually join the development teams.
+                </p>
+                <div class="tech-stack">
+                    Requirement: Curiosity & Passion to Learn
+                </div>
+            </div>
+
+        </div>
+
+        <h2 class="section-title">Why Join Us?</h2>
+
+        <div class="benefits">
+            <ul>
+                <li><strong>Real World Experience:</strong> Stop working on dummy projects. Work on software used by
+                    thousands.</li>
+                <li><strong>Mentorship:</strong> Get guidance from senior IT professionals.</li>
+                <li><strong>Certification:</strong> Receive an internship certificate upon successful tenure.</li>
+                <li><strong>Networking:</strong> Connect with the best technical minds on campus.</li>
+                <li><strong>Skill Refinement:</strong> Master C#, ASP.NET, and enterprise networking.</li>
+                <li><strong>Leadership:</strong> Learn to manage projects and lead teams.</li>
+            </ul>
+        </div>
+
+        <div class="cta-container">
+            <h3>Ready to start your journey?</h3>
+            <p style="margin-bottom: 20px;">Applications are open for the current session.</p>
+            <a href="https://mamoon-rasheed.github.io/uot-short-courses-admissions/uot-vdp.html" class="btn-apply">Apply
+                Now</a>
+        </div>
+
+    </div>
+
+</body>
+
+</html>
