@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Volunteer Developer Program Application</title>
+    <style>
+        /* --- CSS VARIABLES & RESET --- */
+        :root {
+            --primary-color: #2c3e50;
+            --accent-color: #3498db;
+            --bg-color: #f4f6f8;
+            --white: #ffffff;
+            --text-color: #333333;
+            --border-radius: 8px;
+            --shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            line-height: 1.6;
+            padding: 20px;
+        }
+
+        /* --- CONTAINER --- */
+        .container {
+            max-width: 700px;
+            margin: 0 auto;
+            background: var(--white);
+            padding: 40px;
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow);
+            border-top: 5px solid var(--accent-color);
+        }
+
+        /* --- HEADER --- */
+        header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        header h1 {
+            color: var(--primary-color);
+            font-size: 24px;
+            margin-bottom: 10px;
+        }
+
+        header p {
+            font-size: 14px;
+            color: #666;
+        }
+
+        /* --- FORM ELEMENTS --- */
+        .form-section {
+            margin-bottom: 25px;
+            padding-bottom: 15px;
+            border-bottom: 1px solid #eee;
+        }
+
+        .form-section:last-child {
+            border-bottom: none;
+        }
+
+        .section-title {
+            font-size: 18px;
+            color: var(--primary-color);
+            margin-bottom: 15px;
+            font-weight: 600;
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: 500;
+            font-size: 14px;
+        }
+
+        input[type="text"],
+        input[type="email"],
+        input[type="tel"],
+        input[type="number"],
+        select,
+        textarea {
+            width: 100%;
+            padding: 10px 12px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            font-size: 14px;
+            transition: border-color 0.3s ease;
+        }
+
+        input:focus,
+        textarea:focus {
+            outline: none;
+            border-color: var(--accent-color);
+            box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.1);
+        }
+
+        textarea {
+            resize: vertical;
+            min-height: 100px;
+        }
+
+        /* --- RADIO CARD STYLING --- */
+        .radio-group {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .radio-card {
+            position: relative;
+            display: block;
+            cursor: pointer;
+        }
+
+        .radio-card input {
+            position: absolute;
+            opacity: 0;
+            cursor: pointer;
+        }
+
+        .card-content {
+            display: block;
+            padding: 15px;
+            border: 1px solid #ddd;
+            border-radius: var(--border-radius);
+            background-color: #fafafa;
+            transition: all 0.2s ease;
+        }
+
+        .card-title {
+            display: block;
+            font-weight: bold;
+            color: var(--primary-color);
+            margin-bottom: 4px;
+        }
+
+        .card-desc {
+            display: block;
+            font-size: 12px;
+            color: #555;
+        }
+
+        .radio-card:hover .card-content {
+            background-color: #eef7fc;
+            border-color: #b3d7f2;
+        }
+
+        .radio-card input:checked+.card-content {
+            background-color: #e3f2fd;
+            border-color: var(--accent-color);
+            box-shadow: 0 0 0 1px var(--accent-color);
+        }
+
+        .radio-card input:checked+.card-content .card-title {
+            color: var(--accent-color);
+        }
+
+        /* --- SUBMIT BUTTON --- */
+        .btn-submit {
+            width: 100%;
+            padding: 12px;
+            background-color: var(--accent-color);
+            color: white;
+            border: none;
+            border-radius: var(--border-radius);
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: background 0.3s ease;
+            margin-top: 10px;
+        }
+
+        .btn-submit:hover {
+            background-color: #2980b9;
+        }
+
+        .btn-submit:disabled {
+            background-color: #95a5a6;
+            cursor: not-allowed;
+        }
+
+        /* --- RESPONSIVE GRID --- */
+        .grid-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+        }
+
+        @media (max-width: 600px) {
+            .grid-row {
+                grid-template-columns: 1fr;
+            }
+
+            .container {
+                padding: 20px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+        <header>
+            <h1>Volunteer Developer Program</h1>
+            <p>Join the IT Team for professional development, leadership, and skill building.</p>
+        </header>
+
+        <form>
+
+            <div class="form-section">
+                <h2 class="section-title">Personal Information</h2>
+                <div class="form-group">
+                    <label for="fullname">Full Name</label>
+                    <input type="text" id="fullname" name="fullname" placeholder="Enter your full name" required>
+                </div>
+                <div class="form-group">
+                    <label for="fathername">Father Name</label>
+                    <input type="text" id="fathername" name="fathername" placeholder="Enter father name" required>
+                </div>
+                <div class="form-group">
+                    <label for="enrollment">Enrollment ID</label>
+                    <input type="text" id="enrollment" name="enrollment" placeholder="e.g., SP26-BSCS-1101122" required>
+                </div>
+
+                <div class="grid-row">
+                    <div class="form-group">
+                        <label for="email">Email Address</label>
+                        <input type="email" id="email" name="email" placeholder="student@uot.edu.pk" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="contact">Contact Number</label>
+                        <input type="tel" id="contact" name="contact" placeholder="03XX-XXXXXXX" required>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-section">
+                <h2 class="section-title">Academic Information</h2>
+                <div class="form-group">
+                    <label for="department">Department</label>
+                    <input type="text" id="department" name="department" placeholder="e.g., Computer Science" required>
+                </div>
+                <div class="form-group">
+                    <label for="program">Program of Study</label>
+                    <input type="text" id="program" name="program" placeholder="e.g., BSCS / BSIT" required>
+                </div>
+                <div class="grid-row">
+                    <div class="form-group">
+                        <label for="session">Session</label>
+                        <input type="text" id="session" name="session" placeholder="e.g., 2024-2027" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="semester">Semester</label>
+                        <input type="text" id="semester" name="semester" placeholder="e.g., 4th" required>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-section">
+                <h2 class="section-title">Area to Work With</h2>
+                <div class="radio-group">
+                    <label class="radio-card">
+                        <input type="radio" name="area_of_work" value="developers" required>
+                        <span class="card-content">
+                            <span class="card-title">Developers</span>
+                            <span class="card-desc">Front-End (HTML, CSS, JS) and Backend (C# and ASP.NET)</span>
+                        </span>
+                    </label>
+
+                    <label class="radio-card">
+                        <input type="radio" name="area_of_work" value="documentation">
+                        <span class="card-content">
+                            <span class="card-title">Documentation & Guide Creator</span>
+                            <span class="card-desc">Documenting projects and creating tutorials.</span>
+                        </span>
+                    </label>
+
+                    <label class="radio-card">
+                        <input type="radio" name="area_of_work" value="content">
+                        <span class="card-content">
+                            <span class="card-title">Content Creators</span>
+                            <span class="card-desc">Creating content for the University Website.</span>
+                        </span>
+                    </label>
+
+                    <label class="radio-card">
+                        <input type="radio" name="area_of_work" value="learners">
+                        <span class="card-content">
+                            <span class="card-title">Learners</span>
+                            <span class="card-desc">Students with no coding knowledge wanting to explore.</span>
+                        </span>
+                    </label>
+
+                    <label class="radio-card">
+                        <input type="radio" name="area_of_work" value="networking">
+                        <span class="card-content">
+                            <span class="card-title">Networking & Server Admin</span>
+                            <span class="card-desc">Managing networks, server analytics, and troubleshooting.</span>
+                        </span>
+                    </label>
+                </div>
+            </div>
+
+            <div class="form-section">
+                <h2 class="section-title">Experience</h2>
+                <div class="form-group">
+                    <label for="experience">Prior Experience / Skills</label>
+                    <textarea id="experience" name="experience" required
+                        placeholder="Tell us about your past projects, tools you know, or why you want to join..."></textarea>
+                </div>
+            </div>
+
+            <button type="submit" class="btn-submit">Submit Application</button>
+
+        </form>
+    </div>
+
+    <script>
+        // REPLACE THIS URL WITH YOUR NEW DEPLOYMENT URL
+        const scriptURL = 'https://script.google.com/macros/s/AKfycbz9eIXCkJ3ANjhJZIPhueHiKNiPIEjxNSAd3SeBjLQDpnp9G9k7WDVB8vyJIN4bVJgwcw/exec';
+
+        const form = document.querySelector('form');
+        const btn = document.querySelector('.btn-submit');
+
+        form.addEventListener('submit', e => {
+            e.preventDefault();
+            btn.disabled = true;
+            btn.innerText = "Submitting...";
+
+            fetch(scriptURL, { method: 'POST', body: new FormData(form) })
+                .then(response => {
+                    alert("Application Submitted Successfully!");
+                    form.reset();
+                    btn.disabled = false;
+                    btn.innerText = "Submit Application";
+                })
+                .catch(error => {
+                    alert("Error! Please try again.");
+                    console.error('Error!', error.message);
+                    btn.disabled = false;
+                    btn.innerText = "Submit Application";
+                });
+        });
+    </script>
+
+</body>
+
+</html>
