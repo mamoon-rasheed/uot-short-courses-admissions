@@ -4,137 +4,535 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Course Details - University of Turbat</title>
+    <title>Course Details - University of Turbat Short Courses</title>
+    <meta name="description"
+        content="Explore short courses offered by University of Turbat including AI Automation, MS Office, DIT Diploma, Professional Typing, and IT Education for children.">
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
         body {
             font-family: 'Inter', sans-serif;
+            background: #0f172a;
+            color: #e2e8f0;
+        }
+
+        /* Animated gradient hero */
+        .hero-bg {
+            background: linear-gradient(135deg, #0f172a 0%, #1e3a5f 40%, #0f4c75 70%, #1b2838 100%);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-bg::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            pointer-events: none;
+            background: radial-gradient(circle at 20% 50%, rgba(56, 189, 248, 0.08) 0%, transparent 50%),
+                radial-gradient(circle at 80% 20%, rgba(99, 102, 241, 0.08) 0%, transparent 50%);
+        }
+
+        /* Glassmorphism cards */
+        .glass-card {
+            background: rgba(30, 41, 59, 0.6);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid rgba(148, 163, 184, 0.1);
+            border-radius: 16px;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .glass-card:hover {
+            transform: translateY(-6px);
+            border-color: rgba(56, 189, 248, 0.3);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3), 0 0 60px rgba(56, 189, 248, 0.05);
+        }
+
+        .icon-box {
+            width: 56px;
+            height: 56px;
+            border-radius: 14px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.4rem;
+            flex-shrink: 0;
+        }
+
+        /* Stat counter */
+        .stat-card {
+            background: rgba(30, 41, 59, 0.5);
+            border: 1px solid rgba(148, 163, 184, 0.08);
+            border-radius: 14px;
+            padding: 1.5rem;
+            text-align: center;
+        }
+
+        /* Glow badges */
+        .badge-blue {
+            background: rgba(56, 189, 248, 0.12);
+            color: #38bdf8;
+            border: 1px solid rgba(56, 189, 248, 0.2);
+        }
+
+        .badge-purple {
+            background: rgba(139, 92, 246, 0.12);
+            color: #a78bfa;
+            border: 1px solid rgba(139, 92, 246, 0.2);
+        }
+
+        .badge-emerald {
+            background: rgba(52, 211, 153, 0.12);
+            color: #34d399;
+            border: 1px solid rgba(52, 211, 153, 0.2);
+        }
+
+        .badge-amber {
+            background: rgba(251, 191, 36, 0.12);
+            color: #fbbf24;
+            border: 1px solid rgba(251, 191, 36, 0.2);
+        }
+
+        .badge-rose {
+            background: rgba(251, 113, 133, 0.12);
+            color: #fb7185;
+            border: 1px solid rgba(251, 113, 133, 0.2);
+        }
+
+        /* Fade in */
+        .fade-up {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.7s ease;
+        }
+
+        .fade-up.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Divider glow */
+        .glow-divider {
+            height: 1px;
+            background: linear-gradient(90deg, transparent, rgba(56, 189, 248, 0.3), transparent);
+        }
+
+        /* Feature pill */
+        .feature-pill {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            padding: 6px 14px;
+            border-radius: 999px;
+            font-size: 0.8rem;
+            font-weight: 500;
+            background: rgba(148, 163, 184, 0.08);
+            color: #94a3b8;
+            border: 1px solid rgba(148, 163, 184, 0.1);
+        }
+
+        .cta-btn {
+            background: linear-gradient(135deg, #0ea5e9, #6366f1);
+            padding: 14px 32px;
+            border-radius: 12px;
+            font-weight: 600;
+            color: #fff;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 20px rgba(14, 165, 233, 0.3);
+        }
+
+        .cta-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 30px rgba(14, 165, 233, 0.4);
+        }
+
+        .back-btn {
+            background: rgba(255, 255, 255, 0.06);
+            border: 1px solid rgba(255, 255, 255, 0.12);
+            padding: 10px 22px;
+            border-radius: 10px;
+            color: #cbd5e1;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            font-weight: 500;
+            font-size: 0.9rem;
+            transition: all 0.3s ease;
+        }
+
+        .back-btn:hover {
+            background: rgba(255, 255, 255, 0.1);
+            color: #fff;
+        }
+
+        /* FAQ accordion */
+        .faq-item {
+            border-bottom: 1px solid rgba(148, 163, 184, 0.1);
+        }
+
+        .faq-q {
+            cursor: pointer;
+            padding: 18px 0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .faq-q h4 {
+            font-weight: 500;
+            color: #e2e8f0;
+        }
+
+        .faq-q i {
+            color: #64748b;
+            transition: transform 0.3s ease;
+        }
+
+        .faq-q.active i {
+            transform: rotate(180deg);
+            color: #38bdf8;
+        }
+
+        .faq-a {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.4s ease;
+            color: #94a3b8;
+            line-height: 1.7;
+        }
+
+        .faq-a.open {
+            max-height: 300px;
+            padding-bottom: 16px;
         }
     </style>
 </head>
 
-<body class="bg-gray-50 text-gray-800">
-    <header class="bg-blue-900 text-white py-6 shadow-md">
-        <div class="container mx-auto px-4 flex flex-col md:flex-row items-center justify-between gap-4">
-            <div>
-                <h1 class="text-2xl md:text-3xl font-bold uppercase tracking-wider">Course Details</h1>
-                <p class="text-blue-200 mt-1 text-sm font-medium tracking-wide">University of Turbat Short Courses</p>
+<body>
+    <!-- Navigation -->
+    <nav class="hero-bg sticky top-0 z-50 border-b border-white/5">
+        <div class="container mx-auto px-4 py-4 flex items-center justify-between max-w-6xl relative z-10">
+            <div class="flex items-center gap-3">
+                <img src="https://uot.edu.pk/img/uotlogo.png" alt="UoT Logo" class="h-10 w-10 rounded-full">
+                <div>
+                    <h1 class="text-base font-bold text-white leading-tight">University of Turbat</h1>
+                    <p class="text-xs text-slate-400">Short Courses Program</p>
+                </div>
             </div>
-            <a href="index.html"
-                class="inline-flex items-center gap-2 bg-white text-blue-900 font-semibold px-4 py-3 rounded-full shadow hover:bg-blue-50 transition">
-                <i class="fas fa-arrow-left"></i>
-                Back to Admission Form
-            </a>
+            <a href="index.html" class="back-btn"><i class="fas fa-arrow-left text-sm"></i> Apply Now</a>
         </div>
-    </header>
+    </nav>
 
-    <main class="container mx-auto px-4 py-10 space-y-8 max-w-5xl">
-        <section class="bg-white rounded-xl shadow-md p-8">
-            <h2 class="text-xl font-semibold text-gray-800 mb-4">Short Course Program Overview</h2>
-            <p class="text-gray-600 leading-7">The University of Turbat offers practical short courses designed to build
-                specialized skills, professional certification readiness, and digital literacy for a wide range of
-                learners. Each course is tailored with focused learning outcomes, flexible duration, and hands-on
-                practice.</p>
-        </section>
-
-        <section class="grid gap-6">
-            <article class="bg-white rounded-xl shadow-md p-8 border border-blue-100">
-                <div class="flex items-center justify-between mb-4">
-                    <h3 class="text-lg font-semibold text-gray-800">IT Education for School Children</h3>
-                    <span class="text-sm font-medium text-blue-700 bg-blue-100 px-3 py-1 rounded-full">Duration: 2
-                        Months</span>
-                </div>
-                <p class="text-gray-600 mb-4">This course introduces children to computing, digital safety, and
-                    introductory programming in a fun and age-appropriate format. It builds confidence with technology
-                    while teaching students how to use educational tools safely.</p>
-                <ul class="list-disc list-inside text-gray-600 space-y-2">
-                    <li>Basic computer skills, internet safety, and visual programming concepts.</li>
-                    <li>Interactive learning designed for primary and middle school learners.</li>
-                    <li>Encourages creativity through digital storytelling, simple coding, and multimedia.</li>
-                </ul>
-            </article>
-
-            <article class="bg-white rounded-xl shadow-md p-8 border border-blue-100">
-                <div class="flex items-center justify-between mb-4">
-                    <h3 class="text-lg font-semibold text-gray-800">AI Automation</h3>
-                    <span class="text-sm font-medium text-blue-700 bg-blue-100 px-3 py-1 rounded-full">Duration: 2
-                        Months</span>
-                </div>
-                <p class="text-gray-600 mb-4">This course is a practical introduction to AI tools like ChatGPT, Claude,
-                    and other modern assistants. Students learn prompt engineering, building AI-enabled mobile apps, web
-                    apps, software, and productivity workflows for business, education, and office environments.</p>
-                <ul class="list-disc list-inside text-gray-600 space-y-2">
-                    <li>Key topics: prompt design, AI tool workflows, product ideation, and productivity automation.
-                    </li>
-                    <li>Hands-on practice using AI to build mobile apps, web apps, software tools, and business
-                        solutions.</li>
-                    <li>Learn how to create sellable products and services using AI tools for students, teachers,
-                        offices, and entrepreneurs.</li>
-                </ul>
-            </article>
-
-            <article class="bg-white rounded-xl shadow-md p-8 border border-blue-100">
-                <div class="flex items-center justify-between mb-4">
-                    <h3 class="text-lg font-semibold text-gray-800">MS Office Certification</h3>
-                    <span class="text-sm font-medium text-blue-700 bg-blue-100 px-3 py-1 rounded-full">Duration: 2
-                        Months</span>
-                </div>
-                <p class="text-gray-600 mb-4">Designed to prepare students for Microsoft Office certification, this
-                    course develops advanced skills in Word, Excel, PowerPoint, and Outlook with an emphasis on
-                    productivity and workplace readiness.</p>
-                <ul class="list-disc list-inside text-gray-600 space-y-2">
-                    <li>Advanced functions, document design, data analysis, and presentation development.</li>
-                    <li>Certification preparation exercises and exam-style practice tasks.</li>
-                    <li>Recommended for students, office staff, teachers, and entry-level professionals.</li>
-                </ul>
-            </article>
-
-            <article class="bg-white rounded-xl shadow-md p-8 border border-blue-100">
-                <div class="flex items-center justify-between mb-4">
-                    <h3 class="text-lg font-semibold text-gray-800">DiT (Diploma in IT)</h3>
-                    <span class="text-sm font-medium text-blue-700 bg-blue-100 px-3 py-1 rounded-full">Duration: 12
-                        Months</span>
-                </div>
-                <p class="text-gray-600 mb-4">The Diploma in IT is an intensive foundational program covering computer
-                    fundamentals, networking, programming concepts, and basic database management.</p>
-                <ul class="list-disc list-inside text-gray-600 space-y-2">
-                    <li>Topics include operating systems, hardware, internet technologies, and introductory coding.</li>
-                    <li>Focus on practical skills for everyday IT tasks and entry-level technical roles.</li>
-                    <li>Good for learners seeking a strong base in information technology.</li>
-                </ul>
-            </article>
-
-            <article class="bg-white rounded-xl shadow-md p-8 border border-blue-100">
-                <div class="flex items-center justify-between mb-4">
-                    <h3 class="text-lg font-semibold text-gray-800">Professional Typing</h3>
-                    <span class="text-sm font-medium text-blue-700 bg-blue-100 px-3 py-1 rounded-full">Duration: 1
-                        Month</span>
-                </div>
-                <p class="text-gray-600 mb-4">A practical typing course that improves speed, accuracy, and familiarity
-                    with modern keyboard layouts. Ideal for administrative staff, students, and anyone looking to
-                    improve document entry efficiency.</p>
-                <ul class="list-disc list-inside text-gray-600 space-y-2">
-                    <li>Touch typing drills, speed-building exercises, and accuracy improvement techniques.</li>
-                    <li>Focus on both English and Urdu typing practice where available.</li>
-                    <li>Completion leads to a measurable improvement in everyday typing tasks.</li>
-                </ul>
-            </article>
-
-
-        </section>
-
-        <section class="bg-white rounded-xl shadow-md p-8">
-            <h2 class="text-xl font-semibold text-gray-800 mb-4">How to Apply</h2>
-            <p class="text-gray-600 leading-7">Visit the admission form and choose the course you want to enroll in.
-                Make sure your personal information and qualifications are complete before submitting.</p>
-            <p class="text-gray-600 mt-3">You can always return to the <a href="index.html"
-                    class="font-semibold text-blue-900 hover:underline">Admission Form</a> to complete your application.
+    <!-- Hero Section -->
+    <section class="hero-bg py-20 md:py-28 text-center">
+        <div class="container mx-auto px-4 max-w-4xl relative z-10">
+            <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full text-sm font-medium mb-6 badge-blue">
+                <i class="fas fa-sparkles"></i> Admissions Open — Limited Seats
+            </div>
+            <h2 class="text-3xl md:text-5xl font-extrabold text-white leading-tight mb-5">
+                Build Future-Ready Skills<br class="hidden md:block"> with <span
+                    style="background:linear-gradient(135deg,#38bdf8,#818cf8);-webkit-background-clip:text;-webkit-text-fill-color:transparent;">Our
+                    Short Courses</span>
+            </h2>
+            <p class="text-slate-400 text-lg md:text-xl max-w-2xl mx-auto mb-10 leading-relaxed">
+                Practical, industry-aligned programs designed to equip you with real-world skills — from AI automation
+                to professional certifications.
             </p>
-        </section>
+            <a href="index.html" class="cta-btn"><i class="fas fa-pen-to-square"></i> Start Your Application</a>
+        </div>
+    </section>
+
+    <!-- Stats -->
+    <section class="py-14 border-b border-white/5">
+        <div class="container mx-auto px-4 max-w-5xl grid grid-cols-2 md:grid-cols-4 gap-4">
+            <div class="stat-card">
+                <div class="text-2xl md:text-3xl font-bold text-white mb-1">5</div>
+                <div class="text-sm text-slate-400">Courses Offered</div>
+            </div>
+            <div class="stat-card">
+                <div class="text-2xl md:text-3xl font-bold text-white mb-1">1–12</div>
+                <div class="text-sm text-slate-400">Months Duration</div>
+            </div>
+            <div class="stat-card">
+                <div class="text-2xl md:text-3xl font-bold text-white mb-1">100%</div>
+                <div class="text-sm text-slate-400">Hands-On Learning</div>
+            </div>
+            <div class="stat-card">
+                <div class="text-2xl md:text-3xl font-bold text-white mb-1">UoT</div>
+                <div class="text-sm text-slate-400">Certified</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Course Cards -->
+    <main class="container mx-auto px-4 py-16 max-w-5xl">
+        <div class="text-center mb-12">
+            <h3 class="text-2xl md:text-3xl font-bold text-white mb-3">Available Courses</h3>
+            <p class="text-slate-400 max-w-xl mx-auto">Choose from our carefully designed programs tailored for
+                students, professionals, and lifelong learners.</p>
+        </div>
+
+        <div class="grid gap-6">
+            <!-- Card 1 -->
+            <article class="glass-card p-7 fade-up">
+                <div class="flex flex-col md:flex-row md:items-start gap-5">
+                    <div class="icon-box" style="background:rgba(251,191,36,0.12);color:#fbbf24;"><i
+                            class="fas fa-child"></i></div>
+                    <div class="flex-1">
+                        <div class="flex flex-wrap items-center gap-3 mb-3">
+                            <h3 class="text-lg font-bold text-white">IT Education for School Children</h3>
+                            <span class="badge-amber text-xs font-semibold px-3 py-1 rounded-full">2 Months</span>
+                        </div>
+                        <p class="text-slate-400 mb-4 leading-relaxed">Introduces children to computing, digital safety,
+                            and introductory programming in a fun, age-appropriate format. Builds confidence with
+                            technology while teaching safe use of educational tools.</p>
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span class="feature-pill"><i class="fas fa-laptop text-xs"></i> Computer Basics</span>
+                            <span class="feature-pill"><i class="fas fa-shield-halved text-xs"></i> Internet
+                                Safety</span>
+                            <span class="feature-pill"><i class="fas fa-code text-xs"></i> Visual Programming</span>
+                            <span class="feature-pill"><i class="fas fa-palette text-xs"></i> Digital
+                                Storytelling</span>
+                        </div>
+                        <p class="text-xs text-slate-500"><i class="fas fa-user-group mr-1"></i> Ideal for: Primary
+                            &amp; Middle School Students</p>
+                    </div>
+                </div>
+            </article>
+
+            <!-- Card 2 -->
+            <article class="glass-card p-7 fade-up">
+                <div class="flex flex-col md:flex-row md:items-start gap-5">
+                    <div class="icon-box" style="background:rgba(139,92,246,0.12);color:#a78bfa;"><i
+                            class="fas fa-robot"></i></div>
+                    <div class="flex-1">
+                        <div class="flex flex-wrap items-center gap-3 mb-3">
+                            <h3 class="text-lg font-bold text-white">AI Automation</h3>
+                            <span class="badge-purple text-xs font-semibold px-3 py-1 rounded-full">2 Months</span>
+                            <span class="badge-rose text-xs font-semibold px-3 py-1 rounded-full"><i
+                                    class="fas fa-fire mr-1"></i>Popular</span>
+                        </div>
+                        <p class="text-slate-400 mb-4 leading-relaxed">Practical introduction to AI tools like ChatGPT,
+                            Claude, and modern assistants. Learn prompt engineering, building AI-enabled mobile apps,
+                            web apps, and productivity workflows for business and education.</p>
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span class="feature-pill"><i class="fas fa-wand-magic-sparkles text-xs"></i> Prompt
+                                Engineering</span>
+                            <span class="feature-pill"><i class="fas fa-mobile-screen text-xs"></i> App Building</span>
+                            <span class="feature-pill"><i class="fas fa-briefcase text-xs"></i> Business
+                                Automation</span>
+                            <span class="feature-pill"><i class="fas fa-lightbulb text-xs"></i> Product Ideation</span>
+                        </div>
+                        <p class="text-xs text-slate-500"><i class="fas fa-user-group mr-1"></i> Ideal for: Students,
+                            Teachers, Entrepreneurs &amp; Office Staff</p>
+                    </div>
+                </div>
+            </article>
+
+            <!-- Card 3 -->
+            <article class="glass-card p-7 fade-up">
+                <div class="flex flex-col md:flex-row md:items-start gap-5">
+                    <div class="icon-box" style="background:rgba(56,189,248,0.12);color:#38bdf8;"><i
+                            class="fas fa-file-word"></i></div>
+                    <div class="flex-1">
+                        <div class="flex flex-wrap items-center gap-3 mb-3">
+                            <h3 class="text-lg font-bold text-white">MS Office Certification</h3>
+                            <span class="badge-blue text-xs font-semibold px-3 py-1 rounded-full">2 Months</span>
+                        </div>
+                        <p class="text-slate-400 mb-4 leading-relaxed">Prepares students for Microsoft Office
+                            certification with advanced skills in Word, Excel, PowerPoint, and Outlook. Emphasis on
+                            productivity and workplace readiness.</p>
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span class="feature-pill"><i class="fas fa-file-excel text-xs"></i> Excel &amp; Data</span>
+                            <span class="feature-pill"><i class="fas fa-file-powerpoint text-xs"></i>
+                                Presentations</span>
+                            <span class="feature-pill"><i class="fas fa-certificate text-xs"></i> Certification
+                                Prep</span>
+                            <span class="feature-pill"><i class="fas fa-chart-bar text-xs"></i> Data Analysis</span>
+                        </div>
+                        <p class="text-xs text-slate-500"><i class="fas fa-user-group mr-1"></i> Ideal for: Students,
+                            Office Staff &amp; Entry-Level Professionals</p>
+                    </div>
+                </div>
+            </article>
+
+            <!-- Card 4 -->
+            <article class="glass-card p-7 fade-up">
+                <div class="flex flex-col md:flex-row md:items-start gap-5">
+                    <div class="icon-box" style="background:rgba(52,211,153,0.12);color:#34d399;"><i
+                            class="fas fa-graduation-cap"></i></div>
+                    <div class="flex-1">
+                        <div class="flex flex-wrap items-center gap-3 mb-3">
+                            <h3 class="text-lg font-bold text-white">DiT (Diploma in IT)</h3>
+                            <span class="badge-emerald text-xs font-semibold px-3 py-1 rounded-full">12 Months</span>
+                            <span class="badge-blue text-xs font-semibold px-3 py-1 rounded-full"><i
+                                    class="fas fa-award mr-1"></i>Diploma</span>
+                        </div>
+                        <p class="text-slate-400 mb-4 leading-relaxed">Intensive foundational program covering computer
+                            fundamentals, networking, programming concepts, and basic database management. Builds a
+                            strong technical foundation.</p>
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span class="feature-pill"><i class="fas fa-server text-xs"></i> Networking</span>
+                            <span class="feature-pill"><i class="fas fa-code text-xs"></i> Programming</span>
+                            <span class="feature-pill"><i class="fas fa-database text-xs"></i> Databases</span>
+                            <span class="feature-pill"><i class="fas fa-desktop text-xs"></i> OS &amp; Hardware</span>
+                        </div>
+                        <p class="text-xs text-slate-500"><i class="fas fa-user-group mr-1"></i> Ideal for: Anyone
+                            seeking a strong IT foundation</p>
+                    </div>
+                </div>
+            </article>
+
+            <!-- Card 5 -->
+            <article class="glass-card p-7 fade-up">
+                <div class="flex flex-col md:flex-row md:items-start gap-5">
+                    <div class="icon-box" style="background:rgba(251,113,133,0.12);color:#fb7185;"><i
+                            class="fas fa-keyboard"></i></div>
+                    <div class="flex-1">
+                        <div class="flex flex-wrap items-center gap-3 mb-3">
+                            <h3 class="text-lg font-bold text-white">Professional Typing</h3>
+                            <span class="badge-rose text-xs font-semibold px-3 py-1 rounded-full">1 Month</span>
+                        </div>
+                        <p class="text-slate-400 mb-4 leading-relaxed">Practical typing course that improves speed,
+                            accuracy, and keyboard fluency. Covers touch typing drills, speed-building exercises, and
+                            both English and Urdu typing.</p>
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span class="feature-pill"><i class="fas fa-gauge-high text-xs"></i> Speed Building</span>
+                            <span class="feature-pill"><i class="fas fa-bullseye text-xs"></i> Accuracy Drills</span>
+                            <span class="feature-pill"><i class="fas fa-language text-xs"></i> English &amp; Urdu</span>
+                        </div>
+                        <p class="text-xs text-slate-500"><i class="fas fa-user-group mr-1"></i> Ideal for: Admin Staff,
+                            Students &amp; Data Entry Professionals</p>
+                    </div>
+                </div>
+            </article>
+        </div>
     </main>
+
+    <!-- Eligibility -->
+    <section class="border-t border-white/5 py-16">
+        <div class="container mx-auto px-4 max-w-5xl">
+            <h3 class="text-2xl font-bold text-white mb-8 text-center">Eligibility &amp; Requirements</h3>
+            <div class="grid md:grid-cols-3 gap-5">
+                <div class="glass-card p-6 text-center">
+                    <div class="text-3xl mb-3">📋</div>
+                    <h4 class="font-semibold text-white mb-2">Basic Qualification</h4>
+                    <p class="text-sm text-slate-400">Minimum Matric / equivalent for most courses. IT Education open to
+                        school children.</p>
+                </div>
+                <div class="glass-card p-6 text-center">
+                    <div class="text-3xl mb-3">🆔</div>
+                    <h4 class="font-semibold text-white mb-2">Documents Needed</h4>
+                    <p class="text-sm text-slate-400">Valid CNIC or B-Form, recent passport photo, and last
+                        qualification certificate.</p>
+                </div>
+                <div class="glass-card p-6 text-center">
+                    <div class="text-3xl mb-3">💳</div>
+                    <h4 class="font-semibold text-white mb-2">Payment</h4>
+                    <p class="text-sm text-slate-400">Fees payable at university office after online form submission.
+                        PDF receipt generated.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ -->
+    <section class="border-t border-white/5 py-16">
+        <div class="container mx-auto px-4 max-w-3xl">
+            <h3 class="text-2xl font-bold text-white mb-8 text-center">Frequently Asked Questions</h3>
+            <div>
+                <div class="faq-item">
+                    <div class="faq-q" onclick="toggleFaq(this)">
+                        <h4>Who can apply for these short courses?</h4>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-a">Anyone with a basic educational background can apply. The IT Education course is
+                        designed for school children, while other courses are open to students, professionals, and
+                        general learners.</div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-q" onclick="toggleFaq(this)">
+                        <h4>Will I receive a certificate?</h4>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-a">Yes. All students who successfully complete their course will receive an official
+                        certificate from the University of Turbat.</div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-q" onclick="toggleFaq(this)">
+                        <h4>What is the mode of instruction?</h4>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-a">All courses are conducted on-campus with hands-on lab sessions. Schedules are
+                        designed to accommodate both full-time and part-time learners.</div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-q" onclick="toggleFaq(this)">
+                        <h4>How do I pay the course fee?</h4>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-a">After submitting the online form, download your admission PDF and visit the
+                        university office for physical payment verification.</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="py-16 text-center"
+        style="background:linear-gradient(135deg,rgba(14,165,233,0.08),rgba(99,102,241,0.08));">
+        <div class="container mx-auto px-4 max-w-2xl">
+            <h3 class="text-2xl md:text-3xl font-bold text-white mb-4">Ready to Get Started?</h3>
+            <p class="text-slate-400 mb-8">Fill out the admission form today and take the first step toward building
+                future-ready skills.</p>
+            <a href="index.html" class="cta-btn"><i class="fas fa-pen-to-square"></i> Apply for Admission</a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="border-t border-white/5 py-10">
+        <div class="container mx-auto px-4 max-w-5xl flex flex-col md:flex-row items-center justify-between gap-4">
+            <div class="flex items-center gap-3">
+                <img src="https://uot.edu.pk/img/uotlogo.png" alt="UoT" class="h-8 w-8 rounded-full opacity-70">
+                <span class="text-sm text-slate-500">&copy; 2026 University of Turbat. All rights reserved.</span>
+            </div>
+            <div class="flex items-center gap-4 text-slate-500 text-sm">
+                <a href="https://uot.edu.pk" target="_blank" class="hover:text-white transition">uot.edu.pk</a>
+                <span>•</span>
+                <span><i class="fas fa-phone mr-1"></i> 0852-400561</span>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // FAQ toggle
+        function toggleFaq(el) {
+            const answer = el.nextElementSibling;
+            const isOpen = answer.classList.contains('open');
+            document.querySelectorAll('.faq-a').forEach(a => a.classList.remove('open'));
+            document.querySelectorAll('.faq-q').forEach(q => q.classList.remove('active'));
+            if (!isOpen) { answer.classList.add('open'); el.classList.add('active'); }
+        }
+
+        // Scroll fade-in
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); } });
+        }, { threshold: 0.1 });
+        document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+    </script>
 </body>
 
 </html>
